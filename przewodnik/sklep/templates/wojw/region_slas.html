@@ -1,0 +1,103 @@
+{% block content %}
+<link rel="stylesheet" href="../../static/css/wojw.css">
+
+<body>
+<header>
+    <div class="user-info">
+        {% if user.is_authenticated %}
+            <span>Welcome, {{ user.username }}!</span>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% endif %}
+    </div>
+</header>
+<article>
+    <h1>Śląskie</h1>
+    <p>Najważniejsze miasta</p>
+    <div class="blocks-container">
+        <div class="block">
+            <div class="city">
+                <p>Katowice</p>
+                Katowice to nowoczesne miasto, które stało się centrum biznesowym i kulturalnym Górnego Śląska. Słynie z imponującego Spodka, siedziby wielu ważnych wydarzeń muzycznych i sportowych, oraz z unikalnej architektury przemysłowej, która przekształca się w przestrzeń kulturalną.
+                <img src="../../static/images/miasta/kato.jpeg" alt="Katowice">
+               
+            </div>
+            <div class="city">
+                <p>Spodek</p>
+                Ikoniczna hala widowiskowo-sportowa w kształcie latającego spodka, symbol Katowic. Odbywają się tu największe koncerty, wydarzenia sportowe i targi.
+                <br><br>  <img src="../../static/images/miejsca/spod.jpeg" alt="City 2">
+               
+            </div>
+            <div class="city">
+                <p>Nikiszowiec </p>
+                Zabytkowa dzielnica górnicza z ceglastą zabudową i unikalnym klimatem. Spacerując wąskimi uliczkami, można poczuć atmosferę dawnego Śląska i spróbować tradycyjnych potraw w lokalnych restauracjach.
+                <br><br>   <img src="../../static/images/miejsca/niki.jpeg" alt="City 3">
+               
+            </div>
+            <div class="city">
+                <p>Muzeum Śląskie</p>
+                Nowoczesne muzeum zlokalizowane na terenie dawnej kopalni, oferujące interaktywne wystawy o historii i kulturze regionu. Taras widokowy na wieży wyciągowej pozwala podziwiać panoramę miasta.
+                <br><br>   <img src="../../static/images/miejsca/muzeka.jpeg" alt="City 4">
+              
+            </div>
+        </div>
+        <div class="block">
+            <div class="city">
+                <p>Częstochowa</p>
+                Częstochowa to jedno z najważniejszych miejsc pielgrzymkowych w Polsce, słynące z Jasnej Góry, gdzie znajduje się obraz Matki Boskiej Częstochowskiej. Miasto ma również bogatą historię, liczne zabytki i jest centrum duchowym, które przyciąga miliony wiernych każdego roku.
+                <img src="../../static/images/miasta/czes.jpeg" alt="Częstochowa">
+               
+            </div>
+            <div class="city">
+                <p>Jasna Góra</p>
+                Najważniejsze sanktuarium maryjne w Polsce, przyciągające pielgrzymów z całego świata. W klasztorze przechowywany jest cudowny obraz Matki Boskiej Częstochowskiej.
+                <br><br>  <img src="../../static/images/miejsca/jasnc.jpeg" alt="City 2">
+               
+            </div>
+            <div class="city">
+                <p>Muzeum Produkcji Zapałek</p>
+                Unikalne miejsce, gdzie można zobaczyć, jak powstają zapałki oraz poznać historię fabryki działającej od ponad 100 lat. W muzeum znajdują się także stare maszyny produkcyjne.
+                <br><br>  <img src="../../static/images/miejsca/muzec.jpeg" alt="City 3">
+               
+            </div>
+            <div class="city">
+                <p> Aleja Najświętszej Maryi Panny</p>
+                Główna arteria miasta prowadząca do Jasnej Góry, pełna kawiarni, sklepów i zabytkowych budynków. To idealne miejsce na spacer i podziwianie architektury Częstochowy.
+                <br><br>  <img src="../../static/images/miejsca/alej.jpeg" alt="City 4">
+               
+            </div>
+        </div>
+        <div class="block">
+            <div class="city">
+                <p>Zabrze</p>
+                Zabrze to miasto związane z przemysłem węglowym, które dziś rozwija się w kierunku nowoczesnej gospodarki. Znajduje się tutaj Śląski Park Przemysłowy oraz unikalna kopalnia Guido, która łączy historię regionu z edukacją i turystyką industrialną.
+                <img src="../../static/images/miasta/zabr.jpeg" alt="Wałbrzych">
+               
+            </div>
+            <div class="city">
+                <p>Kopalnia Guido</p>
+                Zabytkowa kopalnia węgla kamiennego, gdzie można zjechać 320 metrów pod ziemię. Zwiedzanie obejmuje przejażdżkę górniczą kolejką i pokaz pracy maszyn wydobywczych.
+                <br><br> <img src="../../static/images/miejsca/kopa.jpeg" alt="City 2">
+               
+            </div>
+            <div class="city">
+                <p>Sztolnia Królowa Luiza </p>
+                Podziemny kompleks wypełniony atrakcjami, w tym przejażdżką łodzią po dawnych wyrobiskach. Można tu zobaczyć, jak wyglądała praca górników przed wiekami.
+                <br><br>  <img src="../../static/images/miejsca/szto.jpeg" alt="City 3">
+               
+            </div>
+            <div class="city">
+                <p>Dom Muzyki i Tańca </p>
+                Jedna z najważniejszych sal koncertowych na Śląsku, goszcząca największe wydarzenia kulturalne. Odbywają się tu koncerty symfoniczne, operowe oraz występy gwiazd polskiej i światowej sceny muzycznej.
+                <br><br> <img src="../../static/images/miejsca/dom.jpeg" alt="City 4">
+               
+            </div>
+        </div>
+    </div>
+   
+</article>
+
+</body>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% block content %}
+<link rel="stylesheet" href="../../static/css/wojw.css">
+
+<body>
+<header>
+    <div class="user-info">
+        {% if user.is_authenticated %}
+            <span>Welcome, {{ user.username }}!</span>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% endif %}
+    </div>
+</header>
+<article>
+    <h1>Warmińsko-Mazurskie</h1>
+    <p>Najważniejsze miasta</p>
+    <div class="blocks-container">
+        <div class="block">
+            <div class="city">
+                <p>Olsztyn</p>
+                Olsztyn to stolica Warmii i Mazur, otoczona licznymi jeziorami i lasami. Najważniejszym zabytkiem miasta jest gotycki Zamek Kapituły Warmińskiej, w którym mieszkał Mikołaj Kopernik. Olsztyn przyciąga turystów nie tylko swoją historią, ale także piękną przyrodą i szlakiem kajakowym rzeki Łyny.
+                <img src="../../static/images/miasta/olsz.jpeg" alt="Olsztyn">
+               
+            </div>
+            <div class="city">
+                <p>Zamek Kapituły Warmińskiej </p>
+                Gotycka twierdza z XIV wieku, w której pracował Mikołaj Kopernik. Dziś mieści się tu Muzeum Warmii i Mazur, prezentujące historię regionu.
+                <br><br>  <img src="../../static/images/miejsca/zameo.jpeg" alt="City 2">
+               
+            </div>
+            <div class="city">
+                <p>Planetarium i Obserwatorium Astronomiczne</p>
+                Nowoczesne centrum nauki, które pozwala zgłębiać tajniki kosmosu. Regularnie odbywają się tu pokazy gwiezdnego nieba i seanse popularnonaukowe.
+                <br><br>   <img src="../../static/images/miejsca/plan.jpeg" alt="City 3">
+               
+            </div>
+            <div class="city">
+                <p>Jezioro Ukiel</p>
+                Największe jezioro w Olsztynie, idealne do sportów wodnych i wypoczynku. Na jego brzegu znajdują się plaże, ścieżki spacerowe i wypożyczalnie sprzętu wodnego.
+                <br><br>   <img src="../../static/images/miejsca/jezio.jpeg" alt="City 4">
+              
+            </div>
+        </div>
+        <div class="block">
+            <div class="city">
+                <p>Elbląg</p>
+                Elbląg to jedno z najstarszych miast w Polsce, znane z odbudowanej starówki z charakterystycznymi kamienicami. Przez miasto przepływa rzeka Elbląg, a w pobliżu znajduje się słynny Kanał Elbląski z unikalnym systemem pochylni. Elbląg jest także bramą do Zalewu Wiślanego, co czyni go atrakcyjnym miejscem dla miłośników żeglarstwa.
+                <img src="../../static/images/miasta/elbl.jpeg" alt="Elbląg">
+               
+            </div>
+            <div class="city">
+                <p>Kanał Elbląski</p>
+                Unikalny szlak wodny z systemem pochylni, który pozwala statkom "jeździć" po trawie. To jedna z największych atrakcji inżynieryjnych w Polsce i na świecie.
+                <br><br>  <img src="../../static/images/miejsca/kana.jpeg" alt="City 2">
+               
+            </div>
+            <div class="city">
+                <p>Katedra św. Mikołaja</p>
+                Monumentalna gotycka świątynia z XIV wieku, z wieżą widokową oferującą panoramę miasta. W środku można podziwiać cenne zabytki sztuki sakralnej.
+                <br><br>  <img src="../../static/images/miejsca/katee.jpeg" alt="City 3">
+               
+            </div>
+            <div class="city">
+                <p>  Muzeum Archeologiczno-Historyczne</p>
+                Znajduje się w dawnym kompleksie podzamcza, prezentując bogatą historię Elbląga. Wśród eksponatów są znaleziska z czasów krzyżackich i średniowieczne artefakty.
+                <br><br>  <img src="../../static/images/miejsca/muzee.jpeg" alt="City 4">
+               
+            </div>
+        </div>
+       
+    </div>
+   
+</article>
+
+</body>
+{% endblock %}
