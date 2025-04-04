@@ -1,0 +1,103 @@
+{% block content %}
+<link rel="stylesheet" href="../../static/css/wojw.css">
+
+<body>
+<header>
+    <div class="user-info">
+        {% if user.is_authenticated %}
+            <span>Welcome, {{ user.username }}!</span>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% endif %}
+    </div>
+</header>
+<article>
+    <h1>Mazowieckie</h1>
+    <p>Najważniejsze miasta</p>
+    <div class="blocks-container">
+        <div class="block">
+            <div class="city">
+                <p>Warszawa</p>
+                Warszawa, stolica Polski, to dynamiczne miasto łączące nowoczesność z historią. Symbolami miasta są Zamek Królewski, Stare Miasto oraz Pałac Kultury i Nauki. Warszawa to także centrum biznesowe i kulturalne, pełne muzeów, teatrów i parków, takich jak Łazienki Królewskie.
+                <img src="../../static/images/miasta/wars.jpeg" alt="warszawa">
+               
+            </div>
+            <div class="city">
+                <p>Zamek Królewski</p>
+                Barokowo-klasycystyczna rezydencja królów Polski, odbudowana po II wojnie światowej. W środku można podziwiać bogato zdobione sale, królewskie apartamenty i obrazy Canaletta.
+                <br><br>  <img src="../../static/images/miejsca/zamew.jpeg" alt="City 2">
+               
+            </div>
+            <div class="city">
+                <p>Muzeum Powstania Warszawskiego</p>
+                Interaktywne muzeum poświęcone bohaterom Powstania Warszawskiego z 1944 roku. Ekspozycja łączy archiwalne nagrania, rekwizyty wojenne i multimedialne instalacje.
+                <br><br>   <img src="../../static/images/miejsca/muzew.jpeg" alt="City 3">
+               
+            </div>
+            <div class="city">
+                <p>Łazienki Królewskie</p>
+                Rozległy park z pałacem na wodzie, amfiteatrem i pomnikiem Chopina. Miejsce to zachwyca pięknem przyrody i bogatą historią.
+                <br><br>   <img src="../../static/images/miejsca/lazi.jpeg" alt="City 4">
+              
+            </div>
+        </div>
+        <div class="block">
+            <div class="city">
+                <p>Płock</p>
+                Płock to jedno z najstarszych miast w Polsce, malowniczo położone nad Wisłą. Jego wizytówką jest Wzgórze Tumskie z katedrą, gdzie znajdują się groby władców Polski. Miasto jest również ważnym ośrodkiem przemysłowym, a coroczny Audioriver Festival przyciąga miłośników muzyki elektronicznej.
+                <img src="../../static/images/miasta/ploc.jpeg" alt="Płock">
+               
+            </div>
+            <div class="city">
+                <p>Katedra Wniebowzięcia NMP</p>
+                Jedna z najstarszych katedr w Polsce, skrywająca groby władców Polski. W jej wnętrzu można podziwiać piękne freski i słynną Złotą Bramę.
+                <br><br>  <img src="../../static/images/miejsca/katep.jpeg" alt="City 2">
+               
+            </div>
+            <div class="city">
+                <p>Muzeum Mazowieckie</p>
+                Słynie z unikalnej kolekcji secesji, prezentującej meble, obrazy i biżuterię z przełomu XIX i XX wieku. To prawdziwa gratka dla miłośników sztuki i designu.
+                <br><br>  <img src="../../static/images/miejsca/muzep.jpeg" alt="City 3">
+               
+            </div>
+            <div class="city">
+                <p>Bulwary nad Wisłą</p>
+                Nowoczesna promenada idealna na spacery i relaks. Latem odbywają się tu koncerty, festiwale i pokazy plenerowe.
+                <br><br>  <img src="../../static/images/miejsca/bulw.jpeg" alt="City 4">
+               
+            </div>
+        </div>
+        <div class="block">
+            <div class="city">
+                <p>Radom</p>
+                Radom to miasto w centralnej Polsce, znane z bogatej historii i przemysłu. Najważniejszym wydarzeniem jest Międzynarodowe Pokazy Lotnicze Air Show, przyciągające fanów lotnictwa. Warto zobaczyć także zabytkowy Rynek oraz Zamek Królewski, który jest świadectwem dawnych dziejów miasta.
+                <img src="../../static/images/miasta/rado.jpeg" alt="Radom">
+               
+            </div>
+            <div class="city">
+                <p>Muzeum Wsi Radomskiej</p>
+                Skansen prezentujący tradycyjne drewniane chaty, młyny i kuźnie z regionu. To świetne miejsce, by poczuć klimat dawnej wsi mazowieckiej.
+                <br><br> <img src="../../static/images/miejsca/muzer.jpeg" alt="City 2">
+               
+            </div>
+            <div class="city">
+                <p>Zamek Królewski w Radomiu</p>
+                Pozostałości średniowiecznego zamku, który niegdyś był ważnym ośrodkiem władzy. Obecnie na jego terenie odbywają się wydarzenia kulturalne i rekonstrukcje historyczne.
+                <br><br>  <img src="../../static/images/miejsca/zamer.jpeg" alt="City 3">
+               
+            </div>
+            <div class="city">
+                <p>Deptak na ulicy Żeromskiego</p>
+                Główna arteria miasta, pełna klimatycznych kawiarni i zabytkowych kamienic. To idealne miejsce na spacer i poznanie historycznego centrum Radomia.
+                <br><br> <img src="../../static/images/miejsca/dept.jpeg" alt="City 4">
+               
+            </div>
+        </div>
+    </div>
+   
+</article>
+
+</body>
+{% endblock %}
