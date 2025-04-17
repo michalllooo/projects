@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block title %}Snake{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+    canvas {
+        border: 5px solid #333;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    #restartButton {
+        display: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 10px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #restartButton:hover {
+        background-color: #0056b3;
+    }
+    #score {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+    #topScores {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #topScores h3 {
+        margin-top: 0;
+    }
+    #topScores ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    #topScores li {
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    #topScores li:last-child {
+        border-bottom: none;
+    }
+    #otherGame {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+    }
+    #otherGame a {
+        color: #fff;
+        text-decoration: none;
+        background-color: #007BFF;
+        padding: 10px 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #otherGame a:hover {
+        background-color: #0056b3;
+    }
+</style>
+<div id="score">Score: 0</div>
+<canvas id="gameCanvas" width="400" height="400"></canvas>
+<button id="restartButton" onclick="restartGame()">Restart</button>
+<div id="topScores">
+    <h3>Top Scores</h3>
+    <ul>
+        {% for game in top_scores %}
+            <li>{{ game.user.username }}: {{ game.score }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<div id="otherGame">
+    <a href="{% url 'breakout' %}">Inna gra</a>
+</div>
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const gridSize = 20;
+    let snake = [{ x: 200, y: 200 }];
+    let direction = { x: 0, y: 0 };
+    let apple = { x: 0, y: 0 };
+    let score = 0;
+    let gameOver = false;
+
+    function placeApple() {
+        apple.x = Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize;
+        apple.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
+    }
+
+    function gameLoop() {
+        if (gameOver) return;
+
+        const head = { x: snake[0].x + direction.x * gridSize, y: snake[0].y + direction.y * gridSize };
+
+        if (head.x === apple.x && head.y === apple.y) {
+            score++;
+            document.getElementById('score').innerText = 'Score: ' + score;
+            placeApple();
+        } else {
+            snake.pop();
+        }
+
+        if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height || snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+            gameOver = true;
+            document.getElementById('restartButton').style.display = 'block';
+            document.getElementById('restartButton').innerText = 'Restart (Score: ' + score + ')';
+            saveScore(score);
+            return;
+        }
+
+        snake.unshift(head);
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'red';
+        ctx.fillRect(apple.x, apple.y, gridSize, gridSize);
+        ctx.fillStyle = 'green';
+        snake.forEach(segment => ctx.fillRect(segment.x, segment.y, gridSize, gridSize));
+    }
+
+    function changeDirection(event) {
+        switch (event.key) {
+            case 'ArrowUp':
+                if (direction.y === 0) direction = { x: 0, y: -1 };
+                break;
+            case 'ArrowDown':
+                if (direction.y === 0) direction = { x: 0, y: 1 };
+                break;
+            case 'ArrowLeft':
+                if (direction.x === 0) direction = { x: -1, y: 0 };
+                break;
+            case 'ArrowRight':
+                if (direction.x === 0) direction = { x: 1, y: 0 };
+                break;
+        }
+    }
+
+    function restartGame() {
+        location.reload();  
+    }
+
+    function saveScore(score) {
+        fetch('/save_score/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ score: score })
+        });
+    }
+
+    document.addEventListener('keydown', changeDirection);
+    placeApple();
+    setInterval(gameLoop, 100);
+</script>
+{% endblock %}
