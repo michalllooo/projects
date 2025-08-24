@@ -1,0 +1,4 @@
+﻿  ConsoleApplication5.cpp
+C:\Users\hordz\Desktop\ConsoleApplication5\ConsoleApplication5\ConsoleApplication5.cpp(10,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+C:\Users\hordz\Desktop\ConsoleApplication5\ConsoleApplication5\ConsoleApplication5.cpp(71,6): warning C4101: "odp": lokalna zmienna, do której nie istnieje odwołanie
+  ConsoleApplication5.vcxproj -> C:\Users\hordz\Desktop\ConsoleApplication5\x64\Debug\ConsoleApplication5.exe
